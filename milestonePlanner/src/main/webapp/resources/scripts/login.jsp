@@ -2,6 +2,9 @@
 <%@ page import="com.groupad.jsp.*"%>
 <%@page import="java.sql.ResultSet"%>
 <%
+response.setContentType("application/json");
+
+
 	String username = request.getParameter("username");
 	String password = request.getParameter("password");
 
@@ -15,14 +18,20 @@
 		String userID = resultSet.getString("idusers");
 
 		if (passwordHash.equals(password)) {
-			
+
 			HttpSession sessioni = request.getSession();
 			sessioni.setAttribute("sessionLogin", userID);
-			
-			
-		} else {
-			out.print("Wrong Username or Password!");
-		}
+%>
+[ {"label":"error", "value":"false"}]
+<%
+	} else {
+%>
+[
+   {"label":"error", "value":"true"},
+   {"label":"msg", "value":"Username or Password incorrect!"}
+]
+<%
+	}
 
 	}
 %>
