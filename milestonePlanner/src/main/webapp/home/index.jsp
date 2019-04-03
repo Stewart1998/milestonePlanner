@@ -14,8 +14,19 @@
 	String sessionLogin = (String) request.getSession().getAttribute("sessionLogin");
 
 	if (null != session.getAttribute("sessionLogin")) {
+		
+		ResultSet resultSet = null;
 
-		out.print("Welcome UserID: " + sessionLogin);
+		resultSet = database.query("SELECT * FROM users WHERE idusers = '" + sessionLogin + "'");
+
+		String username = null;
+		while (resultSet.next()) {
+
+			username = resultSet.getString("username");
+			
+		}
+
+		out.print("Welcome to Milestone Planner " + username);
 
 	} else {
 		String redirectURL = "http://localhost:8080/milestonePlanner/";

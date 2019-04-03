@@ -5,13 +5,16 @@
 
 
 <%
+	String url = "jdbc:mysql://mysql.stackcp.com:52430/";
+	String dbName = "webplat2-39378a48";
 
+	String userName = "webplat2-39378a48";
+	String password = "GlasgowCali2019";
 
-	DB_Connection obj_DB_Connection=new DB_Connection();
-	Connection connection=null;
-	connection=obj_DB_Connection.get_connection();
-	System.out.println(connection);
+	Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+	Connection conn = DriverManager.getConnection(url + dbName, userName, password);
 	
-Class.forName("com.mysql.jdbc.Driver");
-connection=DriverManager.getConnection("jdbc:mysql://hostname:3306/databasename","username","password");
-
+	if(!conn.isClosed()){
+		out.print("FUCK");
+	}
+%>
