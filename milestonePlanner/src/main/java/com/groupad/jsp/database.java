@@ -8,24 +8,22 @@ import java.sql.Connection;
 public class database {
 
 	public static Connection connect() {
-		String driverName = "com.mysql.cj.jdbc.Driver";
-		String connectionUrl = "jdbc:mysql://localhost:3306/";
-		String dbName = "main";
-		String userId = "root";
+		String url = "jdbc:mysql://mysql.stackcp.com:52430/";
+		String dbName = "webplat2-39378a48";
+
+		String userName = "webplat2-39378a48";
 		String password = "GlasgowCali2019";
-
-		String result = null;
 		
-		Connection connection = null;
+		String result;
+		
+		Connection connection = null;	
+		
 
 		try {
-			Class.forName(driverName);
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-
-		try {
-			connection = DriverManager.getConnection(connectionUrl + dbName, userId, password);
+			
+			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+			
+			connection = DriverManager.getConnection(url + dbName, userName, password);
 
 			if (!connection.isClosed()) {
 				result =  "true";
