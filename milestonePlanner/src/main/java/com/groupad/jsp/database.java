@@ -57,7 +57,65 @@ public static ResultSet query(String sql) {
 	return resultSet;
 	
 	}
-	
-}
 
+public static int insert(String sql) {
+	Statement statement = null;
+	int val = 0;
+	
+	Connection Connection = connect();
+	
+	try {
+	statement=Connection.createStatement();
+
+	val = statement.executeUpdate(sql);
+	
+	} catch (Exception ex) {
+
+	}
+	
+	return val;
+	
+	}
+		
+public static int update(String sql) {
+	Statement statement = null;
+	int val = 0;
+	
+	Connection Connection = connect();
+	
+	try {
+	statement=Connection.createStatement();
+
+	val = statement.executeUpdate(sql);
+	
+	} catch (Exception ex) {
+
+	}
+	
+	return val;
+	
+	}
+	
+
+
+public static int delete(String sql) {
+	Statement statement = null;
+	int val = 0;
+	
+	Connection Connection = connect();
+	
+	try {
+	statement=Connection.createStatement();
+
+	val = statement.executeUpdate(sql);
+	
+	} catch (Exception ex) {
+
+	}
+	
+	return val;
+	
+	}
+		
+}
 
